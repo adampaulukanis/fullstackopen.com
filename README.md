@@ -4,7 +4,7 @@ The URL is https://fullstackopen.com/en/ and the repo is at https://github.com/f
 
 ## Parts
 
-00. [ ] Fundamentals of Web apps
+00. [x] Fundamentals of Web apps
 01. [ ] Introduction to React
 02. [ ] Communicating with server
 03. [ ] Programming a server with NodeJS and Express
