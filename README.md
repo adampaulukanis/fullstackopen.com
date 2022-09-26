@@ -21,4 +21,5 @@ The URL is https://fullstackopen.com/en/ and the repo is at https://github.com/f
 
 ## Perhaps useful links
 
-+ [The application code](- https://github.com/mluukkai/example_app)
++ [The application code](https://github.com/mluukkai/example_app)
++ [React: Components and Props](https://reactjs.org/docs/components-and-props.html)
