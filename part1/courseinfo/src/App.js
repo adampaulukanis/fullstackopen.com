@@ -1,9 +1,7 @@
-const Header = (props) => {
-    console.log('Header', props);
-    return <h1>{props.course}</h1>
+const Header = ({ course }) => {
+    return <h1>{course}</h1>
 }
 const Content = (props) => {
-    console.log('Content', props);
     return (
         <div>
             <Part part={props.part1} exercise={props.exercise1}/>
@@ -12,16 +10,15 @@ const Content = (props) => {
         </div>
     )
 }
-let counter = 0;
 const Part = (props) => {
-    console.log('Part', ++counter, props);
     return <p>{props.part} {props.exercise}</p>
 }
 const Total = (props) => {
-    console.log('Total', props);
     return <p>Number of exercises {props.exercise1 + props.exercise2 + props.exercise3}</p>
 }
-const App = () => {
+const App = (props) => {
+    const { counter } = props;
+    return <div>{counter}</div>;
     const course = {
         name: 'Half Stack application development',
         parts: [
@@ -42,11 +39,11 @@ const App = () => {
 
     return (
         <div>
-            <Header course={course} />
+            <Header course={course.name} />
 
-            <Content parts={parts} />
+            <Content parts={course.parts} />
 
-            <Total parts={parts} />
+            <Total parts={course.parts} />
         </div>
     );
 }
