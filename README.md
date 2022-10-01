@@ -8,7 +8,7 @@ The [course](https://fullstackopen.com/en/) and the [repo](https://github.com/fu
 01. [ ] Introduction to React
     a) [x] Introduction to React
     b) [x] JavaScript
-    c) [ ] Component state, event handlers
+    c) [ ] [Component state, event handlers](https://fullstackopen.com/en/part1/component_state_event_handlers)
     d) [ ] A more complex state, debugging React app
 02. [ ] Communicating with server
 03. [ ] Programming a server with NodeJS and Express

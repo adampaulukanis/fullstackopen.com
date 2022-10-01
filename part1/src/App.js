@@ -1,32 +1,42 @@
-console.log('App.js');
+import { useState } from 'react';
 
-const Hello = (props) => {
+const Display = ({ counter }) => {
     return (
-        <div>
-            <p>Hello {props.name}, you are {props.age} years old.</p>
-        </div>
+        <div>{counter}</div>
     );
 }
 
-const Footer = () => {
+const Button = ({ onClick, text }) => {
     return (
-        <div>
-            Greeting app created by <a href="abc">ABC</a>
-        </div>
+        <button onClick={onClick}>
+            {text}
+        </button>
     );
 }
 
 const App = () => {
-    const name = 'Peter';
-    const age = 10;
+    const [ counter, setCounter ] = useState(0);
+
+    const increaseByOne =       () => setCounter(counter + 1);
+    const setToZero =           () => setCounter(0);
+    const decreaseByOne =       () => setCounter(counter - 1);
+
     return (
-        <>
-            <h1>Greetings</h1>
-            <Hello name="Maya" age={26 + 10} />
-            <Hello name={name} age={age} />
-            <Hello name="kaszanka" age={2022-1985} />
-            <Footer />
-        </>
+        <div>
+            <Display counter={counter}/>
+            <Button
+                onClick={decreaseByOne}
+                text='minus'
+            />
+            <Button
+                onClick={setToZero}
+                text='reset'
+            />
+            <Button
+                onClick={increaseByOne}
+                text='plus'
+            />
+        </div>
     );
 }
 
