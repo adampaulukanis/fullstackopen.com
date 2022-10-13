@@ -22,7 +22,10 @@ const Button = ({ handleClick, text }) => (
     </button>
 );
 
+const Display = (props) => <div>{props.value}</div>
+
 const App = () => {
+    const [ value, setValue ] = useState(17);
     const [ left, setLeft ] = useState(0);
     const [ right, setRight ] = useState(0);
     const [ allClicks, setAll] = useState([]);
@@ -44,6 +47,7 @@ const App = () => {
             <button onClick={handleRightClick}>Right</button>
             {right}
 
+            <Display value={value}/>
             <History allClicks={allClicks}/>
         </div>
     );
