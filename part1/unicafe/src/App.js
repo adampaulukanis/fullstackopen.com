@@ -1,5 +1,12 @@
 import { useState } from 'react'
 
+const sanitize = (value) => {
+    if (isNaN(value)) {
+        return 0
+    }
+    return value
+}
+
 const Stat = (props) => {
     let value = props.value
     if (props.name.toLowerCase() === 'positive') {
@@ -37,8 +44,8 @@ const App = () => {
                 <Stat name="neutral" value={neutral}/>
                 <Stat name="bad" value={bad}/>
                 <Stat name="all" value={good + neutral + bad}/>
-                <Stat name="average" value={(good - bad) / (good + neutral + bad)}/>
-                <Stat name="positive" value={good / (good + neutral + bad)}/>
+                <Stat name="average" value={sanitize((good - bad) / (good + neutral + bad))}/>
+                <Stat name="positive" value={sanitize(good / (good + neutral + bad))}/>
             </div>
         </>
     )
