@@ -7,7 +7,7 @@ const sanitize = (value) => {
     return value
 }
 
-const Stat = (props) => {
+const Statistics = (props) => {
     let value = props.value
     if (props.name.toLowerCase() === 'positive') {
         value = value * 100
@@ -40,12 +40,12 @@ const App = () => {
 
             <div className="statistics">
                 <h2>Statistics</h2>
-                <Stat name="good" value={good}/>
-                <Stat name="neutral" value={neutral}/>
-                <Stat name="bad" value={bad}/>
-                <Stat name="all" value={good + neutral + bad}/>
-                <Stat name="average" value={sanitize((good - bad) / (good + neutral + bad))}/>
-                <Stat name="positive" value={sanitize(good / (good + neutral + bad))}/>
+                <Statistics name="good" value={good}/>
+                <Statistics name="neutral" value={neutral}/>
+                <Statistics name="bad" value={bad}/>
+                <Statistics name="all" value={good + neutral + bad}/>
+                <Statistics name="average" value={sanitize((good - bad) / (good + neutral + bad))}/>
+                <Statistics name="positive" value={sanitize(good / (good + neutral + bad))}/>
             </div>
         </>
     )
