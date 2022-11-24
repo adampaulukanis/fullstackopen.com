@@ -1,18 +1,18 @@
 import { useState } from 'react'
 
 const Statistics = (props) => {
-    let value = props.value
+    let { value, name } = props
     if (props.name.toLowerCase() === 'positive') {
         value = value * 100
         value = value.toFixed(2);
         value = `${value}%`
     }
-    if (props.name.toLowerCase() === 'average') {
+    if (name.toLowerCase() === 'average') {
         value = value.toFixed(2);
     }
     return (
         <>
-            <p>{props.name}: {value}</p>
+            <p>{name}: {value}</p>
         </>
     )
 }
@@ -74,13 +74,3 @@ const App = () => {
 }
 
 export default App
-
-/*
- *
-                <Statistics name="good" value={good}/>
-                <Statistics name="neutral" value={neutral}/>
-                <Statistics name="bad" value={bad}/>
-                <Statistics name="all" value={good + neutral + bad}/>
-                <Statistics name="average" value={sanitize((good - bad) / (good + neutral + bad))}/>
-                <Statistics name="positive" value={sanitize(good / (good + neutral + bad))}/>
-                */
