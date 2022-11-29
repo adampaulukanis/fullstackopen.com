@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
-const Statistics = (props) => {
+const StatisticLine = (props) => {
     let { value, name } = props
-    if (props.name.toLowerCase() === 'positive') {
+    if (name.toLowerCase() === 'positive') {
         value = value * 100
         value = value.toFixed(2);
         value = `${value}%`
@@ -11,28 +11,32 @@ const Statistics = (props) => {
         value = value.toFixed(2);
     }
     return (
-        <>
-            <p>{name}: {value}</p>
-        </>
+        <p>{name}: {value}</p>
     )
 }
 
-const History = (props) => {
+const Statistics = (props) => {
     if (props.allStats.length !== 0) {
         return (
             <>
-                <Statistics name="good" value={props.good}/>
-                <Statistics name="neutral" value={props.neutral}/>
-                <Statistics name="bad" value={props.bad}/>
-                <Statistics name="all" value={props.good + props.neutral + props.bad}/>
-                <Statistics name="average" value={(props.good * 1 + props.neutral * 0 + props.bad * -1) / (props.good + props.neutral + props.bad)}/>
-                <Statistics name="positive" value={props.good / (props.good + props.neutral + props.bad)}/>
+                <StatisticLine name="good" value={props.good}/>
+                <StatisticLine name="neutral" value={props.neutral}/>
+                <StatisticLine name="bad" value={props.bad}/>
+                <StatisticLine name="all" value={props.good + props.neutral + props.bad}/>
+                <StatisticLine name="average" value={(props.good * 1 + props.neutral * 0 + props.bad * -1) / (props.good + props.neutral + props.bad)}/>
+                <StatisticLine name="positive" value={props.good / (props.good + props.neutral + props.bad)}/>
             </>
         )
     }
 
     return <>No feedback given.</>
 }
+
+const Button = (props) => (
+    <button onClick={props.handleClick}>
+        {props.name}
+    </button>
+)
 
 const App = () => {
     const [ good, setGood ] = useState(0)
@@ -59,15 +63,15 @@ const App = () => {
         <>
             <h1>Give feedback</h1>
             <div className="grading-area">
-                <button onClick={handleGood}>good</button>
-                <button onClick={handleNeutral}>neutral</button>
-                <button onClick={handleBad}>bad</button>
+                <Button name="good" handleClick={handleGood}/>
+                <Button name="neutral" handleClick={handleNeutral}/>
+                <Button name="bad" handleClick={handleBad}/>
             </div>
 
             <div className="statistics">
                 <h2>Statistics</h2>
 
-                <History allStats={allStats} good={good} neutral={neutral} bad={bad}/>
+                <Statistics allStats={allStats} good={good} neutral={neutral} bad={bad}/>
             </div>
         </>
     )
