@@ -4,28 +4,33 @@ const StatisticLine = (props) => {
     let { value, name } = props
     if (name.toLowerCase() === 'positive') {
         value = value * 100
-        value = value.toFixed(2);
+        value = value.toFixed(1);
         value = `${value}%`
     }
     if (name.toLowerCase() === 'average') {
-        value = value.toFixed(2);
+        value = value.toFixed(1);
     }
     return (
-        <p>{name}: {value}</p>
+        <tr>
+            <td>{name}</td>
+            <td>{value}</td>
+        </tr>
     )
 }
 
 const Statistics = (props) => {
     if (props.allStats.length !== 0) {
         return (
-            <>
-                <StatisticLine name="good" value={props.good}/>
-                <StatisticLine name="neutral" value={props.neutral}/>
-                <StatisticLine name="bad" value={props.bad}/>
-                <StatisticLine name="all" value={props.good + props.neutral + props.bad}/>
-                <StatisticLine name="average" value={(props.good * 1 + props.neutral * 0 + props.bad * -1) / (props.good + props.neutral + props.bad)}/>
-                <StatisticLine name="positive" value={props.good / (props.good + props.neutral + props.bad)}/>
-            </>
+            <table>
+                <tbody>
+                    <StatisticLine name="good" value={props.good}/>
+                    <StatisticLine name="neutral" value={props.neutral}/>
+                    <StatisticLine name="bad" value={props.bad}/>
+                    <StatisticLine name="all" value={props.good + props.neutral + props.bad}/>
+                    <StatisticLine name="average" value={(props.good * 1 + props.neutral * 0 + props.bad * -1) / (props.good + props.neutral + props.bad)}/>
+                    <StatisticLine name="positive" value={props.good / (props.good + props.neutral + props.bad)}/>
+                </tbody>
+            </table>
         )
     }
 
