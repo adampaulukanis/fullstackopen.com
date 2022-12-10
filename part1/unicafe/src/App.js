@@ -1,38 +1,47 @@
 import { useState } from 'react'
 
-const Statistics = (props) => {
-    let value = props.value
-    if (props.name.toLowerCase() === 'positive') {
+const StatisticLine = (props) => {
+    let { value, name } = props
+    if (name.toLowerCase() === 'positive') {
         value = value * 100
-        value = value.toFixed(2);
+        value = value.toFixed(1);
         value = `${value}%`
     }
-    if (props.name.toLowerCase() === 'average') {
-        value = value.toFixed(2);
+    if (name.toLowerCase() === 'average') {
+        value = value.toFixed(1);
     }
     return (
-        <>
-            <p>{props.name}: {value}</p>
-        </>
+        <tr>
+            <td>{name}</td>
+            <td>{value}</td>
+        </tr>
     )
 }
 
-const History = (props) => {
+const Statistics = (props) => {
     if (props.allStats.length !== 0) {
         return (
-            <>
-                <Statistics name="good" value={props.good}/>
-                <Statistics name="neutral" value={props.neutral}/>
-                <Statistics name="bad" value={props.bad}/>
-                <Statistics name="all" value={props.good + props.neutral + props.bad}/>
-                <Statistics name="average" value={(props.good * 1 + props.neutral * 0 + props.bad * -1) / (props.good + props.neutral + props.bad)}/>
-                <Statistics name="positive" value={props.good / (props.good + props.neutral + props.bad)}/>
-            </>
+            <table>
+                <tbody>
+                    <StatisticLine name="good" value={props.good}/>
+                    <StatisticLine name="neutral" value={props.neutral}/>
+                    <StatisticLine name="bad" value={props.bad}/>
+                    <StatisticLine name="all" value={props.good + props.neutral + props.bad}/>
+                    <StatisticLine name="average" value={(props.good * 1 + props.neutral * 0 + props.bad * -1) / (props.good + props.neutral + props.bad)}/>
+                    <StatisticLine name="positive" value={props.good / (props.good + props.neutral + props.bad)}/>
+                </tbody>
+            </table>
         )
     }
 
     return <>No feedback given.</>
 }
+
+const Button = (props) => (
+    <button onClick={props.handleClick}>
+        {props.name}
+    </button>
+)
 
 const App = () => {
     const [ good, setGood ] = useState(0)
@@ -59,28 +68,18 @@ const App = () => {
         <>
             <h1>Give feedback</h1>
             <div className="grading-area">
-                <button onClick={handleGood}>good</button>
-                <button onClick={handleNeutral}>neutral</button>
-                <button onClick={handleBad}>bad</button>
+                <Button name="good" handleClick={handleGood}/>
+                <Button name="neutral" handleClick={handleNeutral}/>
+                <Button name="bad" handleClick={handleBad}/>
             </div>
 
             <div className="statistics">
                 <h2>Statistics</h2>
 
-                <History allStats={allStats} good={good} neutral={neutral} bad={bad}/>
+                <Statistics allStats={allStats} good={good} neutral={neutral} bad={bad}/>
             </div>
         </>
     )
 }
 
 export default App
-
-/*
- *
-                <Statistics name="good" value={good}/>
-                <Statistics name="neutral" value={neutral}/>
-                <Statistics name="bad" value={bad}/>
-                <Statistics name="all" value={good + neutral + bad}/>
-                <Statistics name="average" value={sanitize((good - bad) / (good + neutral + bad))}/>
-                <Statistics name="positive" value={sanitize(good / (good + neutral + bad))}/>
-                */
