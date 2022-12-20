@@ -12,26 +12,26 @@ const course = {
             exercises: 10,
             id: 1
         },
-        {
-            name: 'Using props to pass data',
-            exercises: 7,
-            id: 2
-        },
-        {
-            name: 'State of a component',
-            exercises: 14,
-            id: 3
-        },
-        {
-            name: 'Extra module',
-            exercises: 1,
-            id: 4
-        },
-        {
-            name: 'Extra module ABC',
-            exercises: 32,
-            id: 5
-        },
+       {
+           name: 'Using props to pass data',
+           exercises: 7,
+           id: 2
+       },
+       {
+           name: 'State of a component',
+           exercises: 14,
+           id: 3
+       },
+       {
+           name: 'Extra module',
+           exercises: 1,
+           id: 4
+       },
+       {
+           name: 'Extra module ABC',
+           exercises: 32,
+           id: 5
+       },
     ],
 }
 
