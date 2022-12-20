@@ -12,10 +12,10 @@ The [course](https://fullstackopen.com/en/) and the [repo](https://github.com/fu
     d) [x] [A more complex state, debugging React app](https://fullstackopen.com/en/part1/a_more_complex_state_debugging_react_apps)
 02. [ ] [Communicating with server](https://fullstackopen.com/en/part2)
     a) [x] [Rendering a collection, modules](https://fullstackopen.com/en/part2/rendering_a_collection_modules)
-    b)
-    c)
-    d)
-    e)
+    b) [ ]
+    c) [ ]
+    d) [ ]
+    e) [ ]
 03. [ ] Programming a server with NodeJS and Express
 04. [ ] Testing Express servers, user administration
 05. [ ] Testing React apps
