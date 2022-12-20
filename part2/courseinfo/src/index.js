@@ -45,6 +45,22 @@ const courses = [
                 id: 2
             }
         ]
+    },
+    {
+        id: 3,
+        name: 'test',
+        parts: [
+            {
+                name: 'no no',
+                exercises: 101,
+                id: 1
+            },
+            {
+                name: 'Yest Yez',
+                exercises: 11,
+                id: 2
+            },
+        ]
     }
 ]
 
