@@ -1,0 +1,6 @@
+.App {
+  text-align: center;
+}
+#persons {
+    list-style-type:lower-roman;
+}
