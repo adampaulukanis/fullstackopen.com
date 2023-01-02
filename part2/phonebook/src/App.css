@@ -1,23 +1,20 @@
-.App {
+#root {
   text-align: center;
 }
 #persons {
+    list-style:inside;
+}
+#persons li{
     list-style-type:lower-roman;
 }
 form {
-    display:flex;
-    flex-direction:column;
-    gap:1rem;
-    align-items:center;
 }
 form div {
     display:flex;
-    justify-content:flex-end;
+    justify-content:center;
     margin:0.5rem;
-}
-form button {
-    width: 100%;
 }
 label {
     text-align:right;
+    padding-right:0.2rem;
 }
