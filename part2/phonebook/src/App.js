@@ -12,6 +12,13 @@ const App = () => {
             console.log('Trying to add empty string')
             return
         }
+        // Check if the name already is added
+        if (persons.some(p => p.name === newName)) {
+            alert(`${newName} is already in the phonebook!`)
+            setNewName('')
+            return
+        }
+        // It's OK, so add a new name
         const nameObject = {
             name: newName,
         }
@@ -20,6 +27,9 @@ const App = () => {
     }
 
     const handleNameChange = (event) => {
+        if (event.target.value === '') {
+            return
+        }
         setNewName(event.target.value)
     }
 

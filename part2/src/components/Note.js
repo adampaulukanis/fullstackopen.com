@@ -1,4 +1,4 @@
-let counter = 17
+let counter = 0
 
 const Note = ({ note }) => {
     return (
