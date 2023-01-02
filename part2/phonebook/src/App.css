@@ -4,3 +4,20 @@
 #persons {
     list-style-type:lower-roman;
 }
+form {
+    display:flex;
+    flex-direction:column;
+    gap:1rem;
+    align-items:center;
+}
+form div {
+    display:flex;
+    justify-content:flex-end;
+    margin:0.5rem;
+}
+form button {
+    width: 100%;
+}
+label {
+    text-align:right;
+}
