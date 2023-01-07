@@ -39,7 +39,7 @@ The [course](https://fullstackopen.com/en/) and the [repo](https://github.com/fu
 - [ ] [Automated testing with Mocha](https://javascript.info/testing-mocha)
 - [ ] [Conditional Rendering](https://reactjs.org/docs/conditional-rendering.html)
 - [ ] [Using the State Hook](https://reactjs.org/docs/hooks-state.html)
-- [ ] [React - Components and Props](https://reactjs.org/docs/components-and-props.html)
+- [x] [React - Components and Props](https://reactjs.org/docs/components-and-props.html)
 - [ ] [Forms](https://reactjs.org/docs/forms.html)
 - [ ] [Lifting State Up](https://reactjs.org/docs/lifting-state-up.html)
 - [ ] [This is why we need to bind event handlers in Class Components in React](https://www.freecodecamp.org/news/this-is-why-we-need-to-bind-event-handlers-in-class-components-in-react-f7ea1a6f93eb/)
