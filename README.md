@@ -45,5 +45,5 @@ The [course](https://fullstackopen.com/en/) and the [repo](https://github.com/fu
 - [x] [React - Conditional Rendering](https://reactjs.org/docs/conditional-rendering.html)
 - [x] [React - Lists and Keys](https://reactjs.org/docs/lists-and-keys.html)
 - [x] [React - Forms](https://reactjs.org/docs/forms.html)
-- [ ] [Lifting State Up](https://reactjs.org/docs/lifting-state-up.html)
+- [ ] [React - Lifting State Up](https://reactjs.org/docs/lifting-state-up.html)
 - [ ] [This is why we need to bind event handlers in Class Components in React](https://www.freecodecamp.org/news/this-is-why-we-need-to-bind-event-handlers-in-class-components-in-react-f7ea1a6f93eb/)
