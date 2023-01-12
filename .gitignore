@@ -24,3 +24,6 @@ yarn-error.log*
 
 # offline version of the page
 offline/
+
+# tags
+tags
