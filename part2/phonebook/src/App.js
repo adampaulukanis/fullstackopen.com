@@ -1,8 +1,13 @@
-import './App.css'
 import { useState } from 'react'
+import SearchFilter from './components/SearchFilter'
 
 const App = () => {
-    const [ persons, setPersons ] = useState([])
+    const [ persons, setPersons ] = useState([
+        { name: 'Arto Hellas', number: '040-123456', id: 1 },
+        { name: 'Ada Lovelace', number: '39-44-5323523', id: 2 },
+        { name: 'Dan Abramov', number: '12-43-234345', id: 3 },
+        { name: 'Mary Poppendieck', number: '39-23-6423122', id: 4 }
+    ])
     const [ newName, setNewName ] = useState('')
     const [ newNumber, setNewNumber ] = useState('')
     const [ showOnly, setShowOnly ] = useState('')
@@ -59,25 +64,21 @@ const App = () => {
         : persons
 
     return (
-        <>
+        <div id="my-app">
             <h1>Phonebook</h1>
 
-            <label htmlFor="filter">filter shown with:</label>
-            <input
-                name="filter"
-                onChange={handleFilterChange}
-            />
+            <SearchFilter changeHandler={handleFilterChange} />
 
             <h2>Add a new</h2>
             <form onSubmit={addName}>
                 <div>
-                        <label htmlFor="name">name:</label>
-                        <input
-                            id="name"
-                            name="name"
-                            value={newName}
-                            onChange={handleNameChange}
-                        />
+                    <label htmlFor="name">name:</label>
+                    <input
+                        id="name"
+                        name="name"
+                        value={newName}
+                        onChange={handleNameChange}
+                    />
                 </div>
                 <div>
                     <label htmlFor="number">number:</label>
@@ -96,10 +97,10 @@ const App = () => {
             <h2>Numbers</h2>
             <ul id="persons">
                 {personsToShow.map(p =>
-                    <li key={p.name}>{p.name} : {p.number}</li>
+                <li key={p.name}>{p.name} : {p.number}</li>
                 )}
             </ul>
-        </>
+        </div>
     )
 }
 
