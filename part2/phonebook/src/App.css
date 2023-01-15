@@ -22,3 +22,13 @@ label {
     background: yellow;
     margin:1rem;
 }
+#persons {
+    background:blue;
+    color:white;
+    font-size:xx-large;
+    margin:0;
+    padding:0;
+}
+#persons li:nth-child(even){
+    background:green;
+}
