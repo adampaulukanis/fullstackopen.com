@@ -1,8 +1,10 @@
+import Person from './Person'
+
 function Persons(props) {
     return (
         <ul id="persons">
             {props.personsToShow.map(p =>
-                <li key={p.name}>{p.name} : {p.number}</li>
+                <Person key={p.name} name={p.name} number={p.number} />
             )}
         </ul>
     )
