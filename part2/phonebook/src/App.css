@@ -32,3 +32,8 @@ label {
 #persons li:nth-child(even){
     background:green;
 }
+.PersonFarm {
+    margin:1rem;
+    background:white;
+    border:2px solid black;
+}
