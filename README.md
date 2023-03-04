@@ -13,7 +13,7 @@ The [course](https://fullstackopen.com/en/) and the [repo](https://github.com/fu
 02. [ ] [Communicating with server](https://fullstackopen.com/en/part2)
     a. [x] [Rendering a collection, modules](https://fullstackopen.com/en/part2/rendering_a_collection_modules)
     b. [x] [Forms](https://fullstackopen.com/en/part2/forms)
-    c. [ ] [Getting data from server](https://fullstackopen.com/en/part2/getting_data_from_server)
+    c. [x] [Getting data from server](https://fullstackopen.com/en/part2/getting_data_from_server)
     d. [ ] []()
     e. [ ] []()
 03. [ ] Programming a server with NodeJS and Express

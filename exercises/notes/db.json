@@ -1,0 +1,24 @@
+{
+    "notes": [
+        {
+            "id": 1,
+            "content": "You can bring any calculator you like to the midterm, as long as it doesn't dim the lights when you turn it on.",
+            "important": true
+        },
+        {
+            "id": 2,
+            "content": "New systems generate new problems.",
+            "important": false
+        },
+        {
+            "id": 3,
+            "content": "God is a comic playing to an audience that's afraid to laugh.",
+            "important": true
+        },
+        {
+            "id": 4,
+            "content": "If you think the problem is bad now, just wait until we've solved it.",
+            "important": false
+        }
+    ]
+}
