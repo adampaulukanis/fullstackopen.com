@@ -3,21 +3,25 @@
         {
             "id": 1,
             "content": "You can bring any calculator you like to the midterm, as long as it doesn't dim the lights when you turn it on.",
+            "date": "2022-12-21T00:30:37.097Z",
             "important": true
         },
         {
             "id": 2,
             "content": "New systems generate new problems.",
+            "date": "2022-12-21T00:32:37.123Z",
             "important": false
         },
         {
             "id": 3,
             "content": "God is a comic playing to an audience that's afraid to laugh.",
+            "date": "2022-12-21T00:33:37.342Z",
             "important": true
         },
         {
             "id": 4,
             "content": "If you think the problem is bad now, just wait until we've solved it.",
+            "date": "2021-12-21T00:33:37.342Z",
             "important": false
         }
     ]
