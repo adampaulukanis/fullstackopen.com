@@ -40,3 +40,6 @@ The [course](https://fullstackopen.com/en/) and the [repo](https://github.com/fu
 - [ ] [Conditional Rendering](https://reactjs.org/docs/conditional-rendering.html)
 - [ ] [Using the State Hook](https://reactjs.org/docs/hooks-state.html)
 - [ ] [This is why we need to bind event handlers in Class Components in React](https://www.freecodecamp.org/news/this-is-why-we-need-to-bind-event-handlers-in-class-components-in-react-f7ea1a6f93eb/)
+- [x] [fetch()](https://developer.mozilla.org/en-US/docs/Web/API/fetch)
+- [x] [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+- [x] [Using the Effect Hook](https://reactjs.org/docs/hooks-effect.html)
