@@ -1,57 +1,63 @@
-import { useState } from 'react'
-import SearchFilter from './components/SearchFilter'
-import Persons from './components/Persons'
-import PersonForm from './components/PersonForm'
+import { useState, useEffect } from "react"
+import SearchFilter from "./components/SearchFilter"
+import Persons from "./components/Persons"
+import PersonForm from "./components/PersonForm"
+import axios from "axios"
 
 const App = () => {
-    const [ persons, setPersons ] = useState([
-        { name: 'Arto Hellas', number: '040-123456', id: 1 },
-        { name: 'Ada Lovelace', number: '39-44-5323523', id: 2 },
-        { name: 'Dan Abramov', number: '12-43-234345', id: 3 },
-        { name: 'Mary Poppendieck', number: '39-23-6423122', id: 4 }
-    ])
-    const [ newName, setNewName ] = useState('')
-    const [ newNumber, setNewNumber ] = useState('')
-    const [ showOnly, setShowOnly ] = useState('')
+    const [ persons, setPersons ] = useState([])
+    const [ newName, setNewName ] = useState("")
+    const [ newNumber, setNewNumber ] = useState("")
+    const [ showOnly, setShowOnly ] = useState("")
+
+    useEffect(() => {
+        console.log("Effect")
+        axios
+            .get("http://localhost:3001/persons")
+            .then((response) => {
+                console.log("Promise fullfilled")
+                setPersons(response.data)
+            })
+    }, [] /* The effect is only run along with the first render of the component, because of [] */)
 
     const addName = (event) => {
         event.preventDefault()
-        if (newName === '' || newNumber === '') {
-            alert('Trying to add empty string')
-            setNewName('')
-            setNewNumber('')
+        if (newName === "" || newNumber === "") {
+            alert("Trying to add empty string")
+            setNewName("")
+            setNewNumber("")
             return
         }
         // Check if the name already is added
         if (persons.some(p => p.name === newName)) {
             alert(`${newName} is already in the phonebook!`)
-            setNewName('')
-            setNewNumber('')
+            setNewName("")
+            setNewNumber("")
             return
         }
-        // It's OK, so add a new name
+        // It"s OK, so add a new name
         const nameObject = {
             name: newName.trim(),
             number: newNumber.trim(),
         }
         setPersons(persons.concat(nameObject))
-        setNewName('')
-        setNewNumber('')
+        setNewName("")
+        setNewNumber("")
 
-        document.querySelector('#name').focus()
+        document.querySelector("#name").focus()
     }
 
     const handleNameChange = (event) => {
-        if (event.target.value === '') {
-            setNewName('')
+        if (event.target.value === "") {
+            setNewName("")
             return
         }
         setNewName(event.target.value)
     }
     const handleNumberChange = (event) => {
         const number = event.target.value
-        if (number === '') {
-            setNewNumber('')
+        if (number === "") {
+            setNewNumber("")
             return
         }
         setNewNumber(number)
