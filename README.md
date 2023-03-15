@@ -14,7 +14,7 @@ The [course](https://fullstackopen.com/en/) and the [repo](https://github.com/fu
     a. [x] [Rendering a collection, modules](https://fullstackopen.com/en/part2/rendering_a_collection_modules)
     b. [x] [Forms](https://fullstackopen.com/en/part2/forms)
     c. [x] [Getting data from server](https://fullstackopen.com/en/part2/getting_data_from_server)
-    d. [ ] []()
+    d. [x] [Altering data in server](https://fullstackopen.com/en/part2/altering_data_in_server)
     e. [ ] []()
 03. [ ] Programming a server with NodeJS and Express
 04. [ ] Testing Express servers, user administration
