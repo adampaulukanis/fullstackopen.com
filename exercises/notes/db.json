@@ -45,7 +45,7 @@
     {
       "content": "Jak sie masz Adam? Pora isc do pracy",
       "date": "2023-03-13T12:32:48.859Z",
-      "important": false,
+      "important": true,
       "id": 8
     },
     {
@@ -101,6 +101,18 @@
       "date": "2023-03-15T00:56:54.586Z",
       "important": false,
       "id": 17
+    },
+    {
+      "content": "Największym powodem do chwały nie jest nigdy nie upaść, ale umieć podnieść się za każdym razem , kiedy upadniemy.",
+      "date": "2023-03-15T01:14:11.709Z",
+      "important": false,
+      "id": 18
+    },
+    {
+      "content": "Istnieją tylko dwa dni w roku, w których nic nie może być zrobione. Jeden nazywamy \"wczoraj\", a drugi \"jutro\". \"Dzisiaj\" to właściwy dzień, aby kochać, wierzyć i żyć w pełni.",
+      "date": "2023-03-21T11:28:40.954Z",
+      "important": false,
+      "id": 19
     }
   ]
 }
