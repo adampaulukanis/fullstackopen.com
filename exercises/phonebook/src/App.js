@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import SearchFilter from "./components/SearchFilter"
 import Persons from "./components/Persons"
 import PersonForm from "./components/PersonForm"
-import axios from "axios"
+import communication from "./services/communication"
 
 const App = () => {
     const [ persons, setPersons ] = useState([])
@@ -12,11 +12,11 @@ const App = () => {
 
     useEffect(() => {
         console.log("Effect")
-        axios
-            .get("http://localhost:3001/persons")
-            .then((response) => {
+        communication
+            .getAll()
+            .then(initialData => {
                 console.log("Promise fullfilled")
-                setPersons(response.data)
+                setPersons(initialData)
             })
     }, [] /* The effect is only run along with the first render of the component, because of [] */)
 
@@ -47,10 +47,10 @@ const App = () => {
         console.log(nameObject)
         console.log("-------------------------------------")
 
-        axios
-            .post("http://localhost:3001/persons", nameObject)
-            .then(response => {
-                setPersons(persons.concat(nameObject))
+        communication
+            .create(nameObject)
+            .then(returnedPersons => {
+                setPersons(persons.concat(returnedPersons))
                 setNewName("")
                 setNewNumber("")
             })

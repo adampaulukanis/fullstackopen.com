@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# stop tracking db, because I am going to add new names just for testing purposes
+db.json
