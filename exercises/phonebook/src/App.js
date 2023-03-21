@@ -28,6 +28,7 @@ const App = () => {
             setNewNumber("")
             return
         }
+
         // Check if the name already is added
         if (persons.some(p => p.name === newName)) {
             alert(`${newName} is already in the phonebook!`)
@@ -35,14 +36,24 @@ const App = () => {
             setNewNumber("")
             return
         }
-        // It"s OK, so add a new name
+
+        // It's OK, so add a new name
         const nameObject = {
             name: newName.trim(),
             number: newNumber.trim(),
         }
-        setPersons(persons.concat(nameObject))
-        setNewName("")
-        setNewNumber("")
+
+        console.log("------ Will add the new person ------")
+        console.log(nameObject)
+        console.log("-------------------------------------")
+
+        axios
+            .post("http://localhost:3001/persons", nameObject)
+            .then(response => {
+                setPersons(persons.concat(nameObject))
+                setNewName("")
+                setNewNumber("")
+            })
 
         document.querySelector("#name").focus()
     }
@@ -54,6 +65,7 @@ const App = () => {
         }
         setNewName(event.target.value)
     }
+
     const handleNumberChange = (event) => {
         const number = event.target.value
         if (number === "") {
@@ -62,6 +74,7 @@ const App = () => {
         }
         setNewNumber(number)
     }
+
     const handleFilterChange = (event) => {
         const findThisName = event.target.value
         setShowOnly(findThisName)
