@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import SearchFilter from "./components/SearchFilter"
-import Persons from "./components/Persons"
+import Person from "./components/Person"
 import PersonForm from "./components/PersonForm"
 import communication from "./services/communication"
 
@@ -11,11 +11,11 @@ const App = () => {
     const [ showOnly, setShowOnly ] = useState("")
 
     useEffect(() => {
-        console.log("Effect")
+        console.log("First render")
         communication
             .getAll()
             .then(initialData => {
-                console.log("Promise fullfilled")
+                console.log(initialData)
                 setPersons(initialData)
             })
     }, [] /* The effect is only run along with the first render of the component, because of [] */)
@@ -84,6 +84,16 @@ const App = () => {
         ? persons.filter(p => p.name.toLowerCase().includes(showOnly.toLowerCase()))
         : persons
 
+    const deletePerson = (id) => {
+        console.log(`deleting ${id}............`)
+        communication
+            .remove(id)
+           .then(data => {
+                console.log(data)
+                setPersons(data)
+            })
+    }
+
     return (
         <div id="my-app">
             <h1>Phonebook</h1>
@@ -104,7 +114,16 @@ const App = () => {
 
             <h2>Numbers</h2>
 
-            <Persons personsToShow={personsToShow} />
+            <ul id="persons">
+                {personsToShow.map(p =>
+                    <Person
+                        key={p.id}
+                        name={p.name}
+                        number={p.number}
+                        removeMe={() => deletePerson(p.id)}
+                    />
+                )}
+            </ul>
         </div>
     )
 }

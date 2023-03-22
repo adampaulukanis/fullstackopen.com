@@ -11,8 +11,14 @@ function create(newObject) {
     return request.then(response => response.data)
 }
 
+function remove(id) {
+    axios.delete(`${baseUrl}/${id}`)
+    return getAll()
+}
+
 // eslint-disable-next-line
 export default {
     getAll,
     create,
+    remove,
 }

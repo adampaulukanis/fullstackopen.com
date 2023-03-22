@@ -6,6 +6,10 @@
 }
 #persons li{
     list-style-type:lower-roman;
+    display:flex;
+    justify-content:center;
+    gap:1rem;
+    padding:1rem;
 }
 form {
 }
@@ -19,21 +23,17 @@ label {
     padding-right:0.2rem;
 }
 #my-app {
-    background: yellow;
     margin:1rem;
 }
 #persons {
-    background:blue;
-    color:white;
+    color:black;
     font-size:xx-large;
     margin:0;
     padding:0;
 }
 #persons li:nth-child(even){
-    background:green;
 }
 .PersonFarm {
     margin:1rem;
-    background:white;
     border:2px solid black;
 }

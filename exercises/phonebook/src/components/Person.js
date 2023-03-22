@@ -1,8 +1,9 @@
-function Person(props) {
-    const name = props.name
-    const number = props.number
+function Person({ name, number, removeMe }) {
     return (
-        <li>{name} ☎ {number}</li>
+        <li>
+            {name} ☎ {number}
+            <button onClick={removeMe}>del</button>
+        </li>
     )
 }
 
