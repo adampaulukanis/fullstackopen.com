@@ -31,9 +31,7 @@ const App = () => {
 
         // Check if the name already is added
         if (persons.some(p => p.name === newName)) {
-            alert(`${newName} is already in the phonebook!`)
-            setNewName("")
-            setNewNumber("")
+            console.log("This name is already in the db")
             return
         }
 
@@ -85,13 +83,14 @@ const App = () => {
         : persons
 
     const deletePerson = (id) => {
-        console.log(`deleting ${id}............`)
-        communication
-            .remove(id)
-           .then(data => {
-                console.log(data)
-                setPersons(data)
-            })
+        if (window.confirm(`Delete ${persons.filter(p => p.id === id)[0].name}?`)) {
+            communication
+                .remove(id)
+                .then(data => {
+                    console.log(data)
+                    setPersons(data)
+                })
+        }
     }
 
     return (
