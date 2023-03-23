@@ -16,9 +16,15 @@ function remove(id) {
     return getAll()
 }
 
+function update(newObject) {
+    axios.put(`${baseUrl}/${newObject.id}`, newObject)
+    return getAll()
+}
+
 // eslint-disable-next-line
 export default {
     getAll,
     create,
     remove,
+    update,
 }

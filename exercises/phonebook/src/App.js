@@ -31,7 +31,20 @@ const App = () => {
 
         // Check if the name already is added
         if (persons.some(p => p.name === newName)) {
-            console.log("This name is already in the db")
+            let personAlreadyIn = persons.filter(p => p.name === newName)[0]
+            let updatedPerson = { ...personAlreadyIn, number: newNumber }
+            if (window.confirm(`${personAlreadyIn.name} is already added to phonebook, replace the old number with the new one?`)) {
+                console.log("Replaceing phone numbers for ", personAlreadyIn)
+                communication
+                    .update(updatedPerson)
+                    .then(data => {
+                        console.log(">", data)
+                        setPersons(data)
+                    })
+
+                setNewName("")
+                setNewNumber("")
+            }
             return
         }
 
