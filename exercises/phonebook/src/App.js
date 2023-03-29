@@ -3,12 +3,14 @@ import SearchFilter from "./components/SearchFilter"
 import Person from "./components/Person"
 import PersonForm from "./components/PersonForm"
 import communication from "./services/communication"
+import Notification from "./components/Notification"
 
 const App = () => {
     const [ persons, setPersons ] = useState([])
     const [ newName, setNewName ] = useState("")
     const [ newNumber, setNewNumber ] = useState("")
     const [ showOnly, setShowOnly ] = useState("")
+    const [ notificationMessage, setNotificationMessage ] = useState(null)
 
     useEffect(() => {
         console.log("First render")
@@ -40,6 +42,11 @@ const App = () => {
                     .then(data => {
                         console.log(">", data)
                         setPersons(data)
+
+                        setNotificationMessage(`${JSON.stringify(personAlreadyIn)} has changed the number and the new one is ${newNumber}`)
+                        setTimeout(() => {
+                            setNotificationMessage(null)
+                        }, 5000)
                     })
 
                 setNewName("")
@@ -64,6 +71,11 @@ const App = () => {
                 setPersons(persons.concat(returnedPersons))
                 setNewName("")
                 setNewNumber("")
+
+                setNotificationMessage(`New person (${JSON.stringify(returnedPersons)}) was added`)
+                setTimeout(() => {
+                    setNotificationMessage(null)
+                }, 5000)
             })
 
         document.querySelector("#name").focus()
@@ -109,6 +121,8 @@ const App = () => {
     return (
         <div id="my-app">
             <h1>Phonebook</h1>
+
+            <Notification message={notificationMessage} />
 
             <SearchFilter changeHandler={handleFilterChange} />
 
