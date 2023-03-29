@@ -2,6 +2,7 @@ import axios from 'axios'
 const baseUrl = "http://localhost:3001/persons"
 
 function getAll() {
+    console.log("getAll")
     const request = axios.get(baseUrl)
     return request.then(response => response.data)
 }
@@ -12,13 +13,14 @@ function create(newObject) {
 }
 
 function remove(id) {
-    axios.delete(`${baseUrl}/${id}`)
-    return getAll()
+    const request = axios.delete(`${baseUrl}/${id}`)
+    return request.then(response => response.data)
 }
 
 function update(newObject) {
-    axios.put(`${baseUrl}/${newObject.id}`, newObject)
-    return getAll()
+    console.log("update...")
+    const request = axios.put(`${baseUrl}/${newObject.id}`, newObject)
+    return request.then(response => response.data)
 }
 
 // eslint-disable-next-line
