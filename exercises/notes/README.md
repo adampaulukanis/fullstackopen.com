@@ -1,3 +1,3 @@
 # notes exercise
 
-This is Part2D.
+This is Part2E.
