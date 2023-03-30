@@ -6,19 +6,32 @@ import communication from "./services/communication"
 import Notification from "./components/Notification"
 
 const App = () => {
+    const notificationTime = 10000
+
     const [ persons, setPersons ] = useState([])
     const [ newName, setNewName ] = useState("")
     const [ newNumber, setNewNumber ] = useState("")
     const [ showOnly, setShowOnly ] = useState("")
     const [ notificationMessage, setNotificationMessage ] = useState(null)
+    const [ notificationStatus, setNotificationStatus ] = useState("green")
 
     useEffect(() => {
         console.log("First render")
         communication
             .getAll()
             .then(initialData => {
+                console.log("---------first Render----------------")
                 console.log(initialData)
+                console.log("---------first Render----------------")
                 setPersons(initialData)
+            })
+            .catch(error => {
+                console.error(error)
+                setNotificationMessage("Error occurred while getAll", error)
+                setNotificationStatus("red")
+                setTimeout(() => {
+                    setNotificationMessage(null)
+                }, notificationTime)
             })
     }, [] /* The effect is only run along with the first render of the component, because of [] */)
 
@@ -39,14 +52,23 @@ const App = () => {
                 console.log("Replaceing phone numbers for ", personAlreadyIn)
                 communication
                     .update(updatedPerson)
-                    .then(data => {
-                        console.log(">", data)
-                        setPersons(data)
+                    .then(response  => {
+                        console.log("---------replace phone number--------")
+                        setPersons([ ...persons.filter(p => p.name !== updatedPerson.name), updatedPerson ]) // TODO: this is wrong!
 
                         setNotificationMessage(`${JSON.stringify(personAlreadyIn)} has changed the number and the new one is ${newNumber}`)
+                        setNotificationStatus("green")
                         setTimeout(() => {
                             setNotificationMessage(null)
-                        }, 5000)
+                        }, notificationTime)
+                    })
+                    .catch(error => {
+                        console.error(error)
+                        setNotificationMessage("Error occurred while update", error)
+                        setNotificationStatus("red")
+                        setTimeout(() => {
+                            setNotificationMessage(null)
+                        }, notificationTime)
                     })
 
                 setNewName("")
@@ -73,9 +95,19 @@ const App = () => {
                 setNewNumber("")
 
                 setNotificationMessage(`New person (${JSON.stringify(returnedPersons)}) was added`)
+                setNotificationStatus("green")
                 setTimeout(() => {
                     setNotificationMessage(null)
-                }, 5000)
+                }, notificationTime)
+            })
+            .catch(error => {
+                console.error(error)
+                setNotificationMessage(`An error occurred  (${error})`)
+                setNotificationStatus("red")
+                console.error(error)
+                setTimeout(() => {
+                    setNotificationMessage(null)
+                }, notificationTime)
             })
 
         document.querySelector("#name").focus()
@@ -108,12 +140,32 @@ const App = () => {
         : persons
 
     const deletePerson = (id) => {
-        if (window.confirm(`Delete ${persons.filter(p => p.id === id)[0].name}?`)) {
+        const personToBeDeleted = persons.filter(p => p.id === id)[0].name
+        if (window.confirm(`Delete ${personToBeDeleted}?`)) {
             communication
                 .remove(id)
-                .then(data => {
-                    console.log(data)
-                    setPersons(data)
+                .then(response => {
+                    console.log("---------deletePerson----------------")
+                    console.log(response)
+                    console.log(response.status)
+                    console.log(response.status === 200)
+                    console.log(persons)
+                    console.log("Person " + personToBeDeleted + " deleted")
+                    setPersons([ ...persons.filter(p => p.id !== id) ])
+                    console.log("---------deletePerson----------------")
+                    setNotificationMessage("Person " + personToBeDeleted + " deleted")
+                    setNotificationStatus("green")
+                    setTimeout(() => {
+                        setNotificationMessage(null)
+                    }, notificationTime)
+                })
+                .catch(error => {
+                    setNotificationMessage(`An error occurred  (${error})`)
+                    setNotificationStatus("red")
+                    console.error(error)
+                    setTimeout(() => {
+                        setNotificationMessage(null)
+                    }, notificationTime)
                 })
         }
     }
@@ -122,7 +174,7 @@ const App = () => {
         <div id="my-app">
             <h1>Phonebook</h1>
 
-            <Notification message={notificationMessage} />
+            <Notification message={notificationMessage} status={notificationStatus} />
 
             <SearchFilter changeHandler={handleFilterChange} />
 
@@ -142,12 +194,12 @@ const App = () => {
 
             <ul id="persons">
                 {personsToShow.map(p =>
-                    <Person
-                        key={p.id}
-                        name={p.name}
-                        number={p.number}
-                        removeMe={() => deletePerson(p.id)}
-                    />
+                <Person
+                    key={p.id}
+                    name={p.name}
+                    number={p.number}
+                    removeMe={() => deletePerson(p.id)}
+                />
                 )}
             </ul>
         </div>

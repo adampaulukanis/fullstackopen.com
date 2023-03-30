@@ -14,13 +14,15 @@ function create(newObject) {
 
 function remove(id) {
     const request = axios.delete(`${baseUrl}/${id}`)
-    return request.then(response => response.data)
+    //return request.then(response => response.data)
+    return request
 }
 
 function update(newObject) {
     console.log("update...")
     const request = axios.put(`${baseUrl}/${newObject.id}`, newObject)
-    return request.then(response => response.data)
+    //return request.then(response => response.data)
+    return request
 }
 
 // eslint-disable-next-line
