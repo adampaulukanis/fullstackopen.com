@@ -28,3 +28,10 @@ const MyComponent = () => {
     )
 }
 ```
+
+## Exercises
+
+- phonebook step11
+- phonebook step12
+- exchange rate
+- Data for countries step1

@@ -6,16 +6,16 @@ The [course](https://fullstackopen.com/en/) and the [repo](https://github.com/fu
 
 00. [x] Fundamentals of Web apps
 01. [x] Introduction to React
-    1. [x] Introduction to React
-    2. [x] JavaScript
-    3. [x] [Component state, event handlers](https://fullstackopen.com/en/part1/component_state_event_handlers)
-    4. [x] [A more complex state, debugging React app](https://fullstackopen.com/en/part1/a_more_complex_state_debugging_react_apps)
-02. [ ] [Communicating with server](https://fullstackopen.com/en/part2)
-    a. [x] [Rendering a collection, modules](https://fullstackopen.com/en/part2/rendering_a_collection_modules)
-    b. [x] [Forms](https://fullstackopen.com/en/part2/forms)
-    c. [x] [Getting data from server](https://fullstackopen.com/en/part2/getting_data_from_server)
-    d. [x] [Altering data in server](https://fullstackopen.com/en/part2/altering_data_in_server)
-    e. [ ] [Adding styles to React app](https://fullstackopen.com/en/part2/adding_styles_to_react_app)
+    1. [x] Introduction to React  
+    2. [x] JavaScript  
+    3. [x] [Component state, event handlers](https://fullstackopen.com/en/part1/component_state_event_handlers)  
+    4. [x] [A more complex state, debugging React app](https://fullstackopen.com/en/part1/a_more_complex_state_debugging_react_apps)  
+02. [x] [Communicating with server](https://fullstackopen.com/en/part2)
+    a. [x] [Rendering a collection, modules](https://fullstackopen.com/en/part2/rendering_a_collection_modules)  
+    b. [x] [Forms](https://fullstackopen.com/en/part2/forms)  
+    c. [x] [Getting data from server](https://fullstackopen.com/en/part2/getting_data_from_server)  
+    d. [x] [Altering data in server](https://fullstackopen.com/en/part2/altering_data_in_server)  
+    e. [x] [Adding styles to React app](https://fullstackopen.com/en/part2/adding_styles_to_react_app)  
 03. [ ] Programming a server with NodeJS and Express
 04. [ ] Testing Express servers, user administration
 05. [ ] Testing React apps
