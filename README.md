@@ -15,7 +15,7 @@ The [course](https://fullstackopen.com/en/) and the [repo](https://github.com/fu
     b. [x] [Forms](https://fullstackopen.com/en/part2/forms)  
     c. [x] [Getting data from server](https://fullstackopen.com/en/part2/getting_data_from_server)  
     d. [x] [Altering data in server](https://fullstackopen.com/en/part2/altering_data_in_server)  
-    e. [x] [Adding styles to React app](https://fullstackopen.com/en/part2/adding_styles_to_react_app)  
+    e. [ ] [Adding styles to React app](https://fullstackopen.com/en/part2/adding_styles_to_react_app)  
 03. [ ] Programming a server with NodeJS and Express
 04. [ ] Testing Express servers, user administration
 05. [ ] Testing React apps

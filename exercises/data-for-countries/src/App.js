@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 
 const baseUrl = "https://restcountries.com/v3.1/all"
 
-function DisplayCountries({ countries })
+function DisplayCountries({ countries, clickMe })
 {
     function getLanguagesContent(languagesObject){
         let content = []
@@ -21,15 +21,31 @@ function DisplayCountries({ countries })
                 <h2>{country.name.common} {country.flag}</h2>
                 <p>capital: {country.capital}</p>
                 <p>area: {country.area}</p>
+                <p>region: {country.region}</p>
                 <p>Languages:</p>
                 <ul>{getLanguagesContent(country.languages)}</ul>
+                <pre>
+                    {JSON.stringify(country, null, 2)}
+                </pre>
             </section>
         )
     } else {
         return (
-            <pre>
-                {countries.map(c => c.name.common + " " + c.flag + "\n")}
-            </pre>
+            <ul>
+                {
+                    countries.map(c =>
+                        <li
+                            key={c.name.common}
+                        >
+                            {c.flag}
+                            <span> {c.name.common} </span>
+                            <button
+                                onClick={() => clickMe(c.name)}
+                            >show</button>
+                        </li>
+                    )
+                }
+            </ul>
         )
     }
 }
@@ -38,6 +54,7 @@ function App()
 {
     const [ filtered, setFiltered ] = useState([])
     const [ initial, setInitial ] = useState([])
+    const [ value, setValue ] = useState("")
 
     useEffect(() => {
         axios
@@ -46,11 +63,26 @@ function App()
                 setInitial(result.data)
                 setFiltered(result.data)
             })
-    }, []) // fire up only once
+    }, [] /* runs only once */)
+
+    useEffect(() => {
+        console.log({ value })
+        setFiltered(initial.filter(c => c.name.common.toUpperCase().includes(value.toUpperCase()) === true))
+    }, [value])
 
     function handleOnChange(event) {
-        const value = event.target.value
-        setFiltered(initial.filter(c => c.name.common.toUpperCase().includes(value.toUpperCase()) === true))
+        setValue(event.target.value)
+    }
+
+    function displayCountry(name) {
+        console.log(`Country to be displayed is ${name.official}`)
+        setFiltered(filtered.filter(c => c.name.official.toUpperCase().includes(name.official.toUpperCase()) === true))
+        setValue(name.common)
+    }
+
+    function clearInputCountry(e) {
+        e.preventDefault()
+        setValue("")
     }
 
     return (
@@ -58,11 +90,12 @@ function App()
             <form>
                 <section className="input-zone">
                     <label>find countries
-                        <input onChange={handleOnChange} />
+                        <input onChange={handleOnChange} value={value} />
                     </label>
+                    <button onClick={clearInputCountry}>clear</button>
                 </section>
-                <DisplayCountries countries={filtered} />
             </form>
+            <DisplayCountries countries={filtered} clickMe={displayCountry} />
         </div>
     )
 }

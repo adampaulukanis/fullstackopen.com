@@ -24,3 +24,13 @@
 .bigger {
     font-size:220%;
 }
+.App ul {
+    list-style:none;
+}
+.App ul li {
+    font-size:120%;
+    margin:1em;
+}
+.App ul li span.country-name {
+    margin-right:1em;
+}
