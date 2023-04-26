@@ -1,10 +1,15 @@
-# Data for countries step2
+# Data for countries step3
 
-Improve on the app so that when the names of multiple countries are shown there
-is a button next to the name of the country, which when pressed shows the view
-for that country.
+When there is only one country displayed show the weather report for the capital
+of this country.
 
-# Bugs
+The API used for it is [openweathermap.org](https://openweathermap.org/api).
+
+Username: adam+fullstackopen
+email: <i will not reveal this>+fullstackopen@gmail.com
+password: Ro3yGrXcw8uSI
+
+# Bugs introduced in step2
 
 There is some annoying bug. An example of it is when you try to type in "Sudan"
 for instance and it displays two countries: Sudan and South Sudan. To display

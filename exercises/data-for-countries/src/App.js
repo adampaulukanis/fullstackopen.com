@@ -1,6 +1,9 @@
 import "./App.css"
 import axios from "axios"
 import { useState, useEffect } from "react"
+import Country from "./components/Country"
+import CountryNameFlag from "./components/CountryNameFlag"
+import SearchForm from "./components/SearchForm"
 
 const baseUrl = "https://restcountries.com/v3.1/all"
 
@@ -14,6 +17,17 @@ function DisplayCountries({ countries, clickMe })
         return content
     }
 
+    function weatherInCapital(lat, lon) {
+        axios
+            .get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}`)
+            .then(result => {
+                console.log(result.data.weather[0])
+                /* it dos not work like this */
+                return "siiemammmm"
+                return JSON.stringify(result.data.weather[0], null, 2)
+            })
+    }
+
     if (countries.length === 1) {
         let country = countries[0]
         return (
@@ -24,8 +38,13 @@ function DisplayCountries({ countries, clickMe })
                 <p>region: {country.region}</p>
                 <p>Languages:</p>
                 <ul>{getLanguagesContent(country.languages)}</ul>
+
+                <pre>{weatherInCapital(country.capitalInfo.latlng[0], country.capitalInfo.latlng[1])}</pre>
+
                 <pre>
-                    {JSON.stringify(country, null, 2)}
+                    {
+                        //JSON.stringify(country, null, 2)
+                    }
                 </pre>
             </section>
         )
@@ -52,50 +71,70 @@ function DisplayCountries({ countries, clickMe })
 
 function App()
 {
-    const [ filtered, setFiltered ] = useState([])
-    const [ initial, setInitial ] = useState([])
     const [ value, setValue ] = useState("")
+    const [ countries, setCountries ] = useState([])
+    const [ showOnly, setShowOnly ] = useState("")
 
     useEffect(() => {
         axios
             .get(baseUrl)
             .then(result => {
-                setInitial(result.data)
-                setFiltered(result.data)
+                setCountries(result.data)
             })
     }, [] /* runs only once */)
 
-    useEffect(() => {
-        console.log({ value })
-        setFiltered(initial.filter(c => c.name.common.toUpperCase().includes(value.toUpperCase()) === true))
-    }, [value])
-
-    function handleOnChange(event) {
-        setValue(event.target.value)
+    function handleSearchFormChange(event) {
+        const findThisCountry = event.target.value
+        console.log({ findThisCountry })
+        setShowOnly(findThisCountry)
+        setValue(findThisCountry)
     }
 
-    function displayCountry(name) {
-        console.log(`Country to be displayed is ${name.official}`)
-        setFiltered(filtered.filter(c => c.name.official.toUpperCase().includes(name.official.toUpperCase()) === true))
-        setValue(name.common)
-    }
+    const countriesToShow = showOnly
+        ? countries.filter(c => c.name.common.toUpperCase().includes(showOnly.toUpperCase()) === true)
+        : countries
 
-    function clearInputCountry(e) {
-        e.preventDefault()
+    function clearInput(event) {
+        event.preventDefault()
+        setShowOnly("")
         setValue("")
+    }
+
+    function pokaKraje(countriesToShow) {
+        console.log(countriesToShow)
+        if (countriesToShow.length === 1) {
+            let country = countriesToShow[0]
+            return (
+                <Country
+                    name={country.name.common}
+                    flag={country.flag}
+                    capital={country.capital}
+                    languages={country.languages}
+                    region={country.region}
+                    area={country.area}
+                />
+            )
+        } else {
+            return (
+                countriesToShow.map(country =>
+                    <CountryNameFlag
+                        name={country.name.common}
+                        flag={country.flag}
+                        pressShow={() => { setShowOnly(country.name.common); setValue(country.name.common) }}
+                    />
+                )
+            )
+        }
     }
 
     return (
         <div className="App">
-            <form>
-                <section className="input-zone">
-                    <label>find countries
-                        <input onChange={handleOnChange} value={value} />
-                    </label>
-                    <button onClick={clearInputCountry}>clear</button>
-                </section>
-            </form>
-            <DisplayCountries countries={filtered} clickMe={displayCountry} />
+            <SearchForm changeHandler={handleSearchFormChange} clearHandler={clearInput} value={value} />
+            <ul className="countries">
+                {
+                    pokaKraje(countriesToShow)
+                }
+            </ul>
         </div>
     )
 }

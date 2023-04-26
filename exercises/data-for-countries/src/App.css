@@ -34,3 +34,25 @@
 .App ul li span.country-name {
     margin-right:1em;
 }
+.countries {
+    background: yellow;
+}
+.countries li {
+    padding:0.5em;
+}
+.countries .one-of-many .flag {
+    padding:0.5em;
+    background:white;
+    border-radius:50%;
+    border:1px solid black;
+}
+.countries .country-name {
+    BAckground: white;
+    padding:0.5em;
+}
+.countries .languages {
+    background:pink;
+}
+.countries .langs li {
+    font-size:80%;
+}
