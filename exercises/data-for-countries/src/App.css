@@ -18,41 +18,29 @@
 .App pre {
     padding:var(--padding);
 }
-.App .one-country {
-    padding:var(--padding);
-}
 .bigger {
     font-size:220%;
 }
 .App ul {
     list-style:none;
 }
-.App ul li {
-    font-size:120%;
-    margin:1em;
-}
-.App ul li span.country-name {
-    margin-right:1em;
-}
 .countries {
     background: yellow;
 }
 .countries li {
-    padding:0.5em;
+    display:flex;
+    margin:0.5em;
+    align-items:center;
+    justify-content:center;
+    gap:1em;
 }
-.countries .one-of-many .flag {
+.countries .flag {
     padding:0.5em;
     background:white;
     border-radius:50%;
     border:1px solid black;
 }
-.countries .country-name {
-    BAckground: white;
-    padding:0.5em;
-}
+.countries .country-name {}
 .countries .languages {
     background:pink;
-}
-.countries .langs li {
-    font-size:80%;
 }
