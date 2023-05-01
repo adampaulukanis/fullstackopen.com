@@ -27,7 +27,7 @@ function App()
 
         if(countriesToShow.length === 1) {
             countries.forEach(c => {
-                if (c.name.common.toUpperCase().includes(showOnly.toUpperCase()) === true) {
+                if (c.name.official.toUpperCase().includes(showOnly.toUpperCase()) === true) {
                     // some countries / territories do not have capitals? Ex.: United States Minor Outlying Islands
                     // or OpenWeather API does not provide coordinates for the capital
                     if (Object.keys(c.capitalInfo).length === 0) {
@@ -67,8 +67,8 @@ function App()
         event.preventDefault()
     }
 
-    const countriesToShow = showOnly
-        ? countries.filter(c => c.name.common.toUpperCase().includes(showOnly.toUpperCase()) === true)
+    let countriesToShow = showOnly
+        ? countries.filter(c => c.name.official.toUpperCase().includes(showOnly.toUpperCase()) === true)
         : countries
 
     function clearInput(event) {
@@ -94,6 +94,7 @@ function App()
                     countriesToShow.length === 1 &&
                         <li style={{flexDirection:"column"}}>
                             <h2><span className="flag">{countriesToShow[0].flag}</span> {countriesToShow[0].name.common}</h2>
+                            <p>Official: {countriesToShow[0].name.official}</p>
                             <p>Capital: {countriesToShow[0].capital}</p>
                             <p>Region: {countriesToShow[0].region}</p>
                             <p>Area: {countriesToShow[0].area} km<sup>2</sup></p>
@@ -114,7 +115,7 @@ function App()
                     <li key={country.name.official}>
                         <span className="flag">{country.flag}</span>
                         <h2 className="country-name">{country.name.common}</h2>
-                        <button onClick={() => { setShowOnly(country.name.common); setValue(country.name.common) }}>show</button>
+                        <button onClick={() => { setShowOnly(country.name.official); setValue(country.name.common) }}>show</button>
                     </li>
                 )}
             </ul>
