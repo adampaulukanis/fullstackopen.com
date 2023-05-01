@@ -1,6 +1,6 @@
 function SearchForm(props) {
     return (
-        <form>
+        <form className={props.nameClassStyle}>
             <label>find countries
                 <input
                     id="input-country"

@@ -1,18 +1,26 @@
 :root {
     --padding: 1em;
 }
+body {
+    background:yellow;
+}
 .App {
     margin:1em auto;
-    background:lightgrey;
 }
-.App .input-zone {
+.find-country {
     padding:1em;
-    background:black;
-    color:white;
+    border:2px solid black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:orange;
+    border-radius:5em;
+    gap:1em;
+}
+.find-country * {
 }
 .App label {
     padding:var(--padding);
-    margin-bottom:2em;
 }
 .App label input { margin-left:0.5em; }
 .App pre {
@@ -21,11 +29,9 @@
 .bigger {
     font-size:220%;
 }
-.App ul {
-    list-style:none;
-}
 .countries {
-    background: yellow;
+    list-style:none;
+    border:2px solid black;
 }
 .countries li {
     display:flex;
@@ -42,5 +48,4 @@
 }
 .countries .country-name {}
 .countries .languages {
-    background:pink;
 }
