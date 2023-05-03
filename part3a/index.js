@@ -19,6 +19,15 @@ let notes = [
     }
 ]
 
+app.all("*", (request, response, next) => {
+    console.log({
+        method: request.method,
+        url: request.url,
+        params: request.params,
+    })
+    next() // pass control to the next handler
+})
+
 app.get("/", (request, response) => {
     response.send("<h1>Hello, world!</h1>")
 })
