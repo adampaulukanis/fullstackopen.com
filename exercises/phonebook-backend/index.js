@@ -18,6 +18,11 @@ const persons = [
         "id": 4,
         "name": "Mary Poppendieck", 
         "number": "39-23-6423122"
+    },
+    {
+        "id": 6,
+        "name": "X Files",
+        "number": "123-345-567"
     }
 ]
 
@@ -26,6 +31,16 @@ const app = express()
 
 app.get("/api/persons", (request, response) => {
     response.json(persons)
+})
+
+app.get("/info", (request, response) => {
+    let timeOfThisEvent = new Date()
+    console.log(timeOfThisEvent)
+    response.send(`<html>
+    <body>
+    <p>Phonebook has info for <span style="">${persons.length}</span> people.</p>
+    <p>${timeOfThisEvent}</p>
+    `)
 })
 
 const PORT = 3001
