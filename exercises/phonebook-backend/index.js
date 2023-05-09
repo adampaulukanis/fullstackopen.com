@@ -69,13 +69,16 @@ function getRandomInt(max) {
 
 app.post("/api/persons", (request, response) => {
     const body = request.body
-    const maxId = persons.length > 0
-        ? Math.max(...persons.map(p => p.id))
-        : 0
 
     if (!body.name || !body.number) {
         return response.status(400).json({
             error: "missing name, number or both"
+        })
+    }
+
+    if (persons.find(p => p.name.toUpperCase() === body.name.toUpperCase())) {
+        return response.status(400).json({
+            error: "name must be unique"
         })
     }
 
