@@ -1,4 +1,4 @@
-const persons = [
+let persons = [
     { 
         "id": 1,
         "name": "Arto Hellas", 
@@ -36,6 +36,7 @@ app.get("/api/persons", (request, response) => {
 app.get("/info", (request, response) => {
     let timeOfThisEvent = new Date()
     console.log(timeOfThisEvent)
+
     response.send(`<html>
     <body>
     <p>Phonebook has info for <span style="">${persons.length}</span> people.</p>
@@ -46,10 +47,19 @@ app.get("/info", (request, response) => {
 app.get("/api/persons/:id", (request, response) => {
     const id = Number(request.params.id)
     const person = persons.find(p => p.id === id)
+
     if (person) {
         return response.json(person)
     }
     return response.status(404).end()
+})
+
+app.delete("/api/persons/:id", (request, response) => {
+    console.log("trying to delete ", request.params.id)
+    const id = Number(request.params.id)
+    persons = persons.filter(p => p.id !== id)
+
+    response.status(204).end()
 })
 
 const PORT = 3001
