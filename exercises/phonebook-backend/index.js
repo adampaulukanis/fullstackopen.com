@@ -28,6 +28,7 @@ let persons = [
 
 import express from "express"
 const app = express()
+app.use(express.json())
 
 app.get("/api/persons", (request, response) => {
     response.json(persons)
@@ -52,7 +53,7 @@ app.get("/api/persons/:id", (request, response) => {
         return response.json(person)
     }
     return response.status(404).end()
-})
+ })
 
 app.delete("/api/persons/:id", (request, response) => {
     console.log("trying to delete ", request.params.id)
@@ -62,7 +63,37 @@ app.delete("/api/persons/:id", (request, response) => {
     response.status(204).end()
 })
 
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max)
+}
+
+app.post("/api/persons", (request, response) => {
+    const body = request.body
+    const maxId = persons.length > 0
+        ? Math.max(...persons.map(p => p.id))
+        : 0
+
+    if (!body.name || !body.number) {
+        return response.status(400).json({
+            error: "missing name, number or both"
+        })
+    }
+
+    const addPerson = {
+        id: getRandomInt(300000000000), /* magic number, it must be quite big */
+        name: body.name,
+        number: body.number,
+    }
+
+    persons = persons.concat(addPerson)
+    console.log(addPerson)
+    response.json(addPerson)
+})
+
 const PORT = 3001
-app.listen(PORT, () => {
+app.listen(PORT, (err) => {
+    if (err) {
+        console.error(err)
+    }
     console.log("Server running on port ", PORT)
 })

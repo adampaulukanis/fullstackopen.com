@@ -14,7 +14,7 @@ Ex.:
 - [x] Ex 3.2 Phonebook backend step 2
 - [x] Ex 3.3 Phonebook backend step 3
 - [x] Ex 3.4 Phonebook backend step 4
-- [ ] Ex 3.5 Phonebook backend step 5
+- [x] Ex 3.5 Phonebook backend step 5
 - [ ] Ex 3.6 Phonebook backend step 6
 - [ ] Ex 3.7 Phonebook backend step 7
 - [ ] Ex 3.8 Phonebook backend step 8
