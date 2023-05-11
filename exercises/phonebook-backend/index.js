@@ -1,3 +1,6 @@
+import express from "express"
+import morgan from "morgan"
+
 let persons = [
     { 
         "id": 1,
@@ -26,9 +29,9 @@ let persons = [
     }
 ]
 
-import express from "express"
 const app = express()
 app.use(express.json())
+app.use(morgan("tiny"))
 
 app.get("/api/persons", (request, response) => {
     response.json(persons)
