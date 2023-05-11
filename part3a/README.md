@@ -29,5 +29,5 @@ app.post("/api/notes", (req, res) => {
 - [x] Ex 3.4 Phonebook backend step 4
 - [x] Ex 3.5 Phonebook backend step 5
 - [x] Ex 3.6 Phonebook backend step 6
-- [ ] Ex 3.7 Phonebook backend step 7
-- [ ] Ex 3.8 Phonebook backend step 8
+- [x] Ex 3.7 Phonebook backend step 7
+- [x] Ex 3.8 Phonebook backend step 8
